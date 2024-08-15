@@ -10,6 +10,7 @@ imgTest = face_recognition.load_image_file('ImagesBasic/Bill gates.jpg')
 #image only accepts RGB so convert BGR to RGB
 imgTest = cv2.cvtColor(imgTest,cv2.COLOR_BGR2RGB)
 
+
 #detect the face distance from the camera, [0]-first element
 faceLoc = face_recognition.face_locations(imgElon)[0]
 #detection of the image, [0]-first element
