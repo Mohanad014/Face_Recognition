@@ -3,7 +3,7 @@ Description:
    It generates daily CSV files with attendance records, eliminating the need for manual tracking.
 
 Packages Imported:
-   opencv (for image pre - procesing)
+   opencv (for image pre - procesing),
    face-recognition (for face recognition)
    datatime (for date and time in the attendance)
 
