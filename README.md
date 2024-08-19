@@ -8,7 +8,7 @@ Packages Imported:
    datatime (for date and time in the attendance)
 
 Algorithm:
-  Support Vector Machine(SVM)
+  Support Vector Machine(SVM).
 
 Image Detection:
    Histogram of Oriented Gradients(HOG).
