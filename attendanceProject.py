@@ -24,7 +24,7 @@ for cl in myList:
  #class name will store here with only mohan not mohan.jpg
     classNames.append(os.path.splitext(cl)[0])
 print(classNames)
-
+ 
 #find the encodings for the image
 def findEncodings(images):
     encodeList = []
