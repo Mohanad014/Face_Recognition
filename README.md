@@ -6,7 +6,7 @@ Packages Imported:
    opencv (for image pre - procesing),
    face-recognition (for face recognition),
    datatime (for date and time in the attendance).
-
+ 
 Algorithm:
   Support Vector Machine(SVM).
 
