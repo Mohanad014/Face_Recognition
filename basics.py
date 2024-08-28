@@ -1,6 +1,6 @@
 import cv2
 import face_recognition
-
+ 
 
 #loading the image [import image, eg: Elon Musk]
 imgElon = face_recognition.load_image_file('ImagesBasic/Elon Musk.jpg')
