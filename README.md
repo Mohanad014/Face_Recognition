@@ -13,4 +13,4 @@ Algorithm:
 Image Detection:
    Histogram of Oriented Gradients(HOG). 
 
- 
+  
