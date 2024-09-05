@@ -11,7 +11,7 @@ path = 'ImagesAttendance'
 #images will be stored here
 images = []
 #image names will be stored here
-classNames = []
+classNames = [] 
 #grab the images list from the ImagesAttendance folder
 myList = os.listdir(path)
 #output-['mohan.jpg,vikram.jpg,lingesh.jpg)
