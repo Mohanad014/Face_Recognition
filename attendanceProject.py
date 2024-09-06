@@ -8,7 +8,7 @@ from datetime import datetime
 # from PIL import ImageGrab
  #import the ImagesAttendance 
 path = 'ImagesAttendance' 
-#images will be stored here
+#images will be stored here 
 images = []
 #image names will be stored here
 classNames = [] 
