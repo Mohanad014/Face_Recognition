@@ -7,7 +7,7 @@ Packages Imported:
    face-recognition (for face recognition),
    datatime (for date and time in the attendance). 
  
-Algorithm:
+Algorithm: 
   Support Vector Machine(SVM).
 
 Image Detection:
