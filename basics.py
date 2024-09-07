@@ -2,7 +2,7 @@ import cv2
 import face_recognition
  
   
-#loading the image [import image, eg: Elon Musk]
+#loading the image [import image, eg: Elon Musk] 
 imgElon = face_recognition.load_image_file('ImagesBasic/Elon Musk.jpg')
 #image only accepts RGB so convert BGR to RGB
 imgElon = cv2.cvtColor(imgElon,cv2.COLOR_BGR2RGB)
