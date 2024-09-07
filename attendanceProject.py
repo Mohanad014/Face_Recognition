@@ -6,7 +6,7 @@ import face_recognition
 import os
 from datetime import datetime
 # from PIL import ImageGrab
- #import the ImagesAttendance 
+ #import the ImagesAttendance  
 path = 'ImagesAttendance' 
 #images will be stored here 
 images = []
