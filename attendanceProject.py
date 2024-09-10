@@ -4,7 +4,7 @@ import face_recognition
    
 #to import the path
 import os
-from datetime import datetime 
+from datetime import datetime  
 # from PIL import ImageGrab
  #import the ImagesAttendance  
 path = 'ImagesAttendance'  
