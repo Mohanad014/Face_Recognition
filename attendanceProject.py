@@ -9,7 +9,7 @@ from datetime import datetime
  #import the ImagesAttendance   
 path = 'ImagesAttendance'  
 #images will be stored here 
-images = []
+images = [] 
 #image names will be stored here
 classNames = [] 
 #grab the images list from the ImagesAttendance folder
