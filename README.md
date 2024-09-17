@@ -9,7 +9,7 @@ Packages Imported:
   
 Algorithm:  
   Support Vector Machine(SVM).
-
+  
 Image Detection: 
    Histogram of Oriented Gradients(HOG).   
   
