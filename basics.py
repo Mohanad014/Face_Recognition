@@ -4,7 +4,7 @@ import face_recognition
   
 #loading the image [import image, eg: Elon Musk]  
 imgElon = face_recognition.load_image_file('ImagesBasic/Elon Musk.jpg')
-#image only accepts RGB so convert BGR to RGB 
+#image only accepts RGB so convert BGR to RGB  
 imgElon = cv2.cvtColor(imgElon,cv2.COLOR_BGR2RGB)  
 #loading or importing the test image  
 imgTest = face_recognition.load_image_file('ImagesBasic/Bill gates.jpg') 
