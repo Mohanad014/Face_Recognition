@@ -14,7 +14,7 @@ images = []
 classNames = [] 
 #grab the images list from the ImagesAttendance folder
 myList = os.listdir(path)
-#output-['mohan.jpg,vikram.jpg,lingesh.jpg)
+#output-['mohan.jpg,vikram.jpg,lingesh.jpg) 
 print(myList)
 #read the image for the file, cl is the name of the image
 for cl in myList:
