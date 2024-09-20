@@ -11,6 +11,6 @@ Algorithm:
   Support Vector Machine(SVM).
   
 Image Detection: 
-   Histogram of Oriented Gradients(HOG).   
+   Histogram of Oriented Gradients(HOG).    
   
    
