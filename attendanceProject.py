@@ -1,21 +1,20 @@
 import cv2
 import numpy as np
 import face_recognition
-   
-#to import the path
 import os
-from datetime import datetime   
-# from PIL import ImageGrab  
- #import the ImagesAttendance   
-path = 'ImagesAttendance'   
-#images will be stored here  
-images = [] 
+from datetime import datetime
+# from PIL import ImageGrab
+
+ #import the ImagesAttendance
+path = 'ImagesAttendance'
+#images will be stored here
+images = []
 #image names will be stored here
-classNames = [] 
+classNames = []
 #grab the images list from the ImagesAttendance folder
 myList = os.listdir(path)
-#output-['mohan.jpg,vikram.jpg,lingesh.jpg) 
-print(myList) 
+#output-['mohan.jpg,vikram.jpg,lingesh.jpg)
+print(myList)
 #read the image for the file, cl is the name of the image
 for cl in myList:
     curImg = cv2.imread(f'{path}/{cl}')
@@ -24,7 +23,7 @@ for cl in myList:
  #class name will store here with only mohan not mohan.jpg
     classNames.append(os.path.splitext(cl)[0])
 print(classNames)
- 
+
 #find the encodings for the image
 def findEncodings(images):
     encodeList = []
@@ -52,15 +51,14 @@ def markAttendance(name):
             dtString = now.strftime('%H:%M:%S')
          #print name and time 
             f.writelines(f'\n{name},{dtString}')
- 
+encodeListKnown = findEncodings(images)
+print('Encoding Complete')
+
 #### FOR CAPTURING SCREEN RATHER THAN WEBCAM
 # def captureScreen(bbox=(300,300,690+300,530+300)):
 #     capScr = np.array(ImageGrab.grab(bbox))
 #     capScr = cv2.cvtColor(capScr, cv2.COLOR_RGB2BGR)
 #     return capScr
- 
-encodeListKnown = findEncodings(images)
-print('Encoding Complete')
 
 #initialize the webcam
 cap = cv2.VideoCapture(0)
@@ -91,17 +89,22 @@ while True:
      #bounding box around them and write the name
         if matches[matchIndex]:
             name = classNames[matchIndex].upper()
+        else:
+            name = "Unknown"
             #print(name)
          #Where to draw the rectangele is done by faceLoc
-            y1,x2,y2,x1 = faceLoc
+
+        y1, x2, y2, x1 = faceLoc
          #hence we reduced the face diatance, we retriving the original face
-            y1, x2, y2, x1 = y1*4,x2*4,y2*4,x1*4
-         #draw rectangle 
-            cv2.rectangle(img,(x1,y1),(x2,y2),(0,255,0),2)
-            cv2.rectangle(img,(x1,y2-35),(x2,y2),(0,255,0),cv2.FILLED)
-         #draw small rectangle to write the name inside
-            cv2.putText(img,name,(x1+6,y2-6),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),2)
-         #calls the function and gives the name and store it in CSV(comma seperatd value)
+        y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
+        #draw rectangle
+        cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        cv2.rectangle(img, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
+        #draw small rectangle to write the name inside
+        cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
+
+        #calls the function and gives the name and store it in CSV(comma seperatd value)
+        if name != "FACE_NOT_FOUND":
             markAttendance(name)
 
  #show the image
