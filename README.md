@@ -12,5 +12,18 @@ Algorithm:
   
 Image Detection: 
    Histogram of Oriented Gradients(HOG).    
-  
+
+### Cloning the repository
+
+--> Clone the repository using the command below:
+```bash
+git clone https://github.com/Mohanad014/Face_Recognition-Attendance/
+
+```
+
+--> Install the requirements:
+```bash
+pip install -r requirements.txt
+
+```
    
