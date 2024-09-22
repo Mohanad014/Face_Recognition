@@ -63,50 +63,53 @@ print('Encoding Complete')
 #initialize the webcam
 cap = cv2.VideoCapture(0)
 
-#loop to find each image
+# loop to find each image
 while True:
- #read the image
-    success, img = cap.read()
- #reduce the size of the image
-    imgS = cv2.resize(img,(0,0),None,0.25,0.25)
- #convert BGR to RGB
-    imgS = cv2.cvtColor(imgS, cv2.COLOR_BGR2RGB)
- #multiple images will be there, so find the image distance
-    facesCurFrame = face_recognition.face_locations(imgS)
- #find encoding of the webcam, sending image and Curframe
-    encodesCurFrame = face_recognition.face_encodings(imgS,facesCurFrame)
+    try:
+        # read the image
+        success, img = cap.read()
+        # reduce the size of the image
+        imgS = cv2.resize(img, (0, 0), None, 0.25, 0.25)
+        # convert BGR to RGB
+        imgS = cv2.cvtColor(imgS, cv2.COLOR_BGR2RGB)
+        # multiple images will be there, so find the image distance
+        facesCurFrame = face_recognition.face_locations(imgS)
+        # find encoding of the webcam, sending image and Curframe
+        encodesCurFrame = face_recognition.face_encodings(imgS, facesCurFrame)
 
- #finding the matches, iterate
-    for encodeFace,faceLoc in zip(encodesCurFrame,facesCurFrame):
-     #matching the faces from encodeListKnown(List),encodeFace(first image)
-        matches = face_recognition.compare_faces(encodeListKnown,encodeFace)
-     #compare the distance from encodeListKnown(List),encodeFace(first image)
-        faceDis = face_recognition.face_distance(encodeListKnown,encodeFace)
-        #print(faceDis)
-     #find the minimum distance 
-        matchIndex = np.argmin(faceDis)
+        # finding the matches, iterate
+        for encodeFace, faceLoc in zip(encodesCurFrame, facesCurFrame):
+            # matching the faces from encodeListKnown(List), encodeFace(first image)
+            matches = face_recognition.compare_faces(encodeListKnown, encodeFace)
+            # compare the distance from encodeListKnown(List), encodeFace(first image)
+            faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)
+            # print(faceDis)
+            # find the minimum distance
+            matchIndex = np.argmin(faceDis)
 
-     #bounding box around them and write the name
-        if matches[matchIndex]:
-            name = classNames[matchIndex].upper()
-        else:
-            name = "Unknown"
-            #print(name)
-         #Where to draw the rectangele is done by faceLoc
+            # bounding box around them and write the name
+            if matches[matchIndex]:
+                name = classNames[matchIndex].upper()
+            else:
+                name = "Unknown"
+                # print(name)
+            # Where to draw the rectangle is done by faceLoc
 
-        y1, x2, y2, x1 = faceLoc
-         #hence we reduced the face diatance, we retriving the original face
-        y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
-        #draw rectangle
-        cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
-        cv2.rectangle(img, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
-        #draw small rectangle to write the name inside
-        cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
+            y1, x2, y2, x1 = faceLoc
+            # hence we reduced the face distance, we retrieving the original face
+            y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
+            # draw rectangle
+            cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            cv2.rectangle(img, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
+            # draw small rectangle to write the name inside
+            cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
 
-        #calls the function and gives the name and store it in CSV(comma seperatd value)
-        if name != "FACE_NOT_FOUND":
-            markAttendance(name)
+            # calls the function and gives the name and store it in CSV(comma separated value)
+            if name != "FACE_NOT_FOUND":
+                markAttendance(name)
 
- #show the image
-    cv2.imshow('Webcam',img)
-    cv2.waitKey(1)
+        # show the image
+        cv2.imshow('Webcam', img)
+        cv2.waitKey(1)
+    except Exception as e:
+        print(f"An error occurred: {e}")
